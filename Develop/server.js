@@ -29,6 +29,31 @@ app.get("/api/notes", function(req,res){
     res.sendFile(path.join(__dirname, "./db/db.json"));
 });
 
+// JSON input with keys title and text and add new note object with the message into the db.json file
+
+app.post("/api/notes", function(req,res){
+    fs.readFile(path.join(__dirname, "./db/db.json"), "utf8",function(err,response){
+        if(err){
+            console.log(err);
+        }
+       const notes = JSON.parse(response);
+       const noteRequest = req.body;
+       const newId = notes.length+1;
+       const newNote = {
+           id: newId,
+           title: noteRequest.title,
+           text: noteRequest.text
+       } ;
+       notes.push(newNote);
+       res.json(newNote);
+       fs.writeFile(path.join(__dirname, "./db/db.json"), JSON.stringify(notes, null, 2), function(err){
+           if (err) throw err;
+       });
+
+    });
+});
+
+
 
 
 
