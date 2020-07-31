@@ -53,7 +53,31 @@ app.post("/api/notes", function(req,res){
     });
 });
 
+// Delete the note with id from db.json
 
+app.delete("/api/notes/:id", function(request,response){
+    const deletedId = request.params.id;
+    fs.readFile("./db/db.json", "utf8", function(err, res){
+if(err) {
+    console.log(err);
+}
+let notes = JSON.parse(res);
+if(deletedId <= notes.length) {
+    // remove the element from the array
+    response.json(notes.splice(deletedId-1,1));
+    // renew ids for notes
+    for (let i = 0; i<notes.length; i++) {
+        notes[i].id = i+1;
+    }
+
+    fs.writeFile("./db/db.json", JSON.stringify(notes, null,2), function(error){
+        if (error) throw error;
+    });
+} else {
+    response.json(false);
+}
+    });
+});
 
 
 
