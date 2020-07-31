@@ -63,8 +63,10 @@ if(err) {
 }
 let notes = JSON.parse(res);
 if(deletedId <= notes.length) {
+    
     // remove the element from the array
     response.json(notes.splice(deletedId-1,1));
+
     // renew ids for notes
     for (let i = 0; i<notes.length; i++) {
         notes[i].id = i+1;
