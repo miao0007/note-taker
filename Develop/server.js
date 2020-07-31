@@ -21,7 +21,7 @@ app.get("/", function(req,res){
 
 // route to send user to note page
 app.get("/notes", function(req,res){
-    res.sendFile(path.json(__dirname, "./public/notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 // route that send user the db.json file
