@@ -15,23 +15,23 @@ app.use(express.static("public"));
 // Routes
 
 // route to send user to index page
-app.get("/", function(req,res){
+app.get("/", (req,res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 // route to send user to note page
-app.get("/notes", function(req,res){
+app.get("/notes", (req,res) => {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 // route that send user the db.json file
-app.get("/api/notes", function(req,res){
+app.get("/api/notes", (req,res) => {
     res.sendFile(path.join(__dirname, "./db/db.json"));
 });
 
 // JSON input with keys title and text and add new note object with the message into the db.json file
 
-app.post("/api/notes", function(req,res){
+app.post("/api/notes", (req,res) => {
     fs.readFile(path.join(__dirname, "./db/db.json"), "utf8",function(err,response){
         if(err){
             console.log(err);
@@ -55,15 +55,15 @@ app.post("/api/notes", function(req,res){
 
 // Delete the note with id from db.json
 
-app.delete("/api/notes/:id", function(request,response){
+app.delete("/api/notes/:id", (request,response) => {
     const deletedId = request.params.id;
-    fs.readFile("./db/db.json", "utf8", function(err, res){
+    fs.readFile("./db/db.json", "utf8", (err, res) => {
 if(err) {
     console.log(err);
 }
 let notes = JSON.parse(res);
 if(deletedId <= notes.length) {
-    
+
     // remove the element from the array
     response.json(notes.splice(deletedId-1,1));
 
@@ -72,7 +72,7 @@ if(deletedId <= notes.length) {
         notes[i].id = i+1;
     }
 
-    fs.writeFile("./db/db.json", JSON.stringify(notes, null,2), function(error){
+    fs.writeFile("./db/db.json", JSON.stringify(notes, null,2), (error) => {
         if (error) throw error;
     });
 } else {
@@ -86,6 +86,6 @@ if(deletedId <= notes.length) {
 
 
 // Starts the server to begin listening
-app.listen(PORT, function(){
+app.listen(PORT, ()=>{
 console.log("App listening on PORT: " + PORT);
 });
