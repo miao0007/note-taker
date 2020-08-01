@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/badge/license-MIT-blue)
 
-# Express Note Taker
+## Express Note Taker
 
 ## Live URL
 https://note-taker-jeff.herokuapp.com/
