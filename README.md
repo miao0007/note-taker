@@ -3,6 +3,10 @@
 ![GitHub](https://img.shields.io/badge/license-MIT-blue)
 
 # Express Note Taker
+
+## Live URL
+https://note-taker-jeff.herokuapp.com/
+
 ## Description
 Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
 ## Table of Contents
@@ -30,5 +34,3 @@ GitHub: https://github.com/miao0007
 
 Email: miao188@hotmail.com
 
-## Live URL
-https://note-taker-jeff.herokuapp.com/
