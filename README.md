@@ -34,3 +34,14 @@ GitHub: https://github.com/miao0007
 
 Email: miao188@hotmail.com
 
+## Deployed Site Preview
+
+First Page
+![Alt First Page](./Develop/public/assets/images/firstPage.png)
+
+Write Note and Save
+![Alt First Page](./Develop/public/assets/images/notePage.png)
+
+Delete Note
+![Alt First Page](./Develop/public/assets/images/deleteNote.png)
+
